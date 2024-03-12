@@ -36,7 +36,6 @@ export default function Home() {
         button="Get Started"
         layout="grid"
       />
-      <Slidebox />
       <Switchback
         heading="Discover food shops around the province with our built-in food locator"
         description={lorem}
@@ -46,6 +45,13 @@ export default function Home() {
           text: "Take me there",
           link: "discover",
         }}
+      />
+      <Slidebox />
+      <Switchback
+        heading="Explore town culinary history and specialties through our explore page"
+        description={lorem}
+        image="/images/featured/featured_4.jpg"
+        layout="default"
       />
       <CardDeck />
       <Newsletter

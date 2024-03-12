@@ -22,7 +22,7 @@ const Slidebox = () => {
   }, []);
 
   return (
-    <div className="py-20">
+    <div className="py-10 lg:py-20">
       <Heading
         heading="Discover and explore the flavors of Kapampangan Cuisine"
         description={lorem}

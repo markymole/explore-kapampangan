@@ -11,7 +11,7 @@ interface SwitchbackProps {
   heading: string;
   image: string;
   description: string;
-  button: buttonsProps;
+  button?: buttonsProps;
 }
 
 interface buttonsProps {
@@ -27,7 +27,7 @@ const Switchback = ({
   button,
 }: SwitchbackProps) => {
   return (
-    <div>
+    <div className="py-10 lg:py-20">
       <div
         className={twMerge(
           "max-width padding",
@@ -54,13 +54,13 @@ const Switchback = ({
             </Button>
           )}
         </div>
-        <div>
+        <div className="order-first lg:order-none">
           <Image
             src={image}
             height={1000}
             width={1000}
             alt={image}
-            className="h-full w-full rounded-md shadow-xl"
+            className="h-56 w-full rounded-md object-cover shadow-xl md:h-80 lg:h-96"
           />
         </div>
       </div>
