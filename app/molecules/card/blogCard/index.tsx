@@ -33,7 +33,7 @@ const BlogCard = ({ title, description, image, link }: blogCardProps) => {
         {link && (
           <Link
             href={link ? link : ""}
-            className="text-inter animate mt-2 inline-flex items-center gap-2 font-medium hover:gap-4"
+            className="animate mt-2 inline-flex items-center gap-2 font-poppins font-medium hover:gap-4"
           >
             Read More{" "}
             <svg

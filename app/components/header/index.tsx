@@ -44,7 +44,7 @@ const Header = ({ links }: headerProps) => {
               />
             ))}
           </ul>
-          <Button>Contact Us</Button>
+          <Button variant="primary">Contact Us</Button>
         </div>
         <div className="block lg:hidden">
           <button onClick={() => setOpen(!open)}>
@@ -102,7 +102,7 @@ const Header = ({ links }: headerProps) => {
                 transition={{ delay: 0.6 }}
                 className="w-full"
               >
-                <Button> Contact Us</Button>
+                <Button variant="primary"> Contact Us</Button>
               </motion.div>
             </motion.div>
           </motion.div>

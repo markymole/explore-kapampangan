@@ -1,19 +1,28 @@
 import React, { ReactNode } from "react";
+import { buttonVariant } from "./button.styles";
+import { twMerge } from "tailwind-merge";
 
 interface buttonProps {
   children?: ReactNode;
-  text?: ReactNode;
-  link?: string;
+  variant: "primary" | "secondary" | "outline" | "link";
+  size?: "xs" | "sm" | "base" | "lg" | "xl";
   onClick?: () => void;
 }
 
-const Button = ({ text, link, children, onClick }: buttonProps) => {
+const Button = ({
+  children,
+  variant,
+  size = "base",
+  onClick,
+  ...props
+}: buttonProps) => {
   return (
     <button
       onClick={onClick}
-      className="animate w-full rounded-md border-2 border-black bg-black px-4 py-1.5 font-inter font-medium text-white hover:border-black hover:bg-transparent hover:text-black md:w-fit md:py-2"
+      {...props}
+      className={twMerge(buttonVariant({ variant, size }))}
     >
-      {children ? children : text}
+      {children}
     </button>
   );
 };

@@ -6,7 +6,7 @@ import BlogCard from "@/app/molecules/card/blogCard";
 
 const CardDeck = () => {
   return (
-    <div className="mt-20">
+    <div className="py-20">
       <Heading
         heading="Additional resources on discovering kapampangan cuisine"
         description={lorem}
