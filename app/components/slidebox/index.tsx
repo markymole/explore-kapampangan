@@ -3,8 +3,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import projects, { lorem } from "./featured.data";
-import Slides from "./slides";
-import Heading from "../heading";
+import Slides from "./Slides";
+import Heading from "../Heading";
 
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import "./index.css";

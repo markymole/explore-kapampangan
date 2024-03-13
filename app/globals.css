@@ -9,6 +9,12 @@
 }
 
 @layer components {
+  .max-width-no-padding {
+    @apply mx-auto max-w-[95rem] px-0 md:px-14 lg:px-20 2xl:px-0;
+  }
+}
+
+@layer components {
   .max-width-sm {
     @apply mx-auto max-w-[80rem] px-4 md:px-14 lg:px-20 2xl:px-0;
   }

@@ -4,7 +4,7 @@ import { footerLinks } from "./footer.data";
 
 const Footer = () => {
   return (
-    <footer className="max-width flex items-center justify-between border-t bg-white py-4 md:py-6 ">
+    <footer className="max-width mt-20 flex items-center justify-between border-t bg-white py-4 md:py-6">
       <div className="flex w-full flex-col items-start justify-between gap-8 px-2 py-2 md:flex-row md:flex-wrap md:px-6">
         <div>
           <Link href="/">

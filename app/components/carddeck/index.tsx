@@ -1,5 +1,5 @@
 import React from "react";
-import Heading from "../heading";
+import Heading from "../Heading";
 import { lorem } from "../slidebox/featured.data";
 import { cardsContent } from "./carddeck.data";
 import BlogCard from "@/app/molecules/card/blogCard";

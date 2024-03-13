@@ -40,7 +40,7 @@ const Newsletter = ({
           <input
             type="text"
             placeholder="Enter your email"
-            className="w-full grow rounded-md border-2 bg-black/20 py-2 ps-3 font-poppins text-sm font-medium text-white focus:outline-none"
+            className="w-full grow rounded-md border-2 bg-black/20 py-2 ps-3 font-poppins text-sm font-medium text-white placeholder-white/50 focus:outline-none"
           />
           {button && (
             <Button variant="secondary" size="sm">

@@ -1,11 +1,11 @@
-import CardDeck from "./components/carddeck";
-import Footer from "./components/footer";
-import Header from "./components/header";
+import CardDeck from "./components/CardDeck";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 import Hero from "./components/hero";
-import Newsletter from "./components/newsletter";
+import Newsletter from "./components/Newsletter";
 import Slidebox from "./components/slidebox";
 import { lorem } from "./components/slidebox/featured.data";
-import Switchback from "./components/switchback";
+import Switchback from "./components/Switchback";
 
 export default function Home() {
   const links = [
@@ -15,15 +15,19 @@ export default function Home() {
     },
     {
       page: "Explore",
-      link: "/",
+      link: "/explore",
     },
     {
       page: "Discover",
-      link: "/",
+      link: "/discover",
+    },
+    {
+      page: "Resources",
+      link: "/resources",
     },
     {
       page: "About",
-      link: "/",
+      link: "/about-us",
     },
   ];
 
