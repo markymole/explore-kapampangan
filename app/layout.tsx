@@ -4,8 +4,8 @@ import "./globals.css";
 import { inter, poppins } from "./theme/fonts";
 
 export const metadata: Metadata = {
-  title: "Kapampangan Cuisine",
-  description: "Discover and explore the flavors of Kapampangan Cuisine",
+  title: "Explore Pampanga",
+  description: "Unveiling local treasures",
 };
 
 import "@splidejs/react-splide/css";

@@ -1,9 +1,7 @@
 import { cva } from "class-variance-authority";
 
 export const buttonVariant = cva(
-  [
-    "animate w-full rounded-md px-4 py-1.5 font-inter font-medium md:w-fit md:py-2",
-  ],
+  ["animate w-full rounded-full px-6 py-2 md:w-fit md:py-2"],
   {
     variants: {
       variant: {
@@ -22,6 +20,12 @@ export const buttonVariant = cva(
         base: ["text-base"],
         lg: ["text-lg"],
         xl: ["text-xl"],
+      },
+      weight: {
+        normal: ["font-normal"],
+        medium: ["font-medium"],
+        semibold: ["font-semibold"],
+        bold: ["font-bold"],
       },
     },
   },

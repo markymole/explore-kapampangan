@@ -6,20 +6,13 @@ import Map from "../../Map";
 
 import { towns } from "./HeroMap.data";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import Link from "next/link";
 
-const HeroMap = () => {
-  const [selected, setSelected] = useState<string>("");
-  const router = useRouter();
+interface HeroMapProps {
+  selectedTown: string;
+}
 
-  const searchParams = useSearchParams();
-  const search = searchParams.get("selected");
-
-  useEffect(() => {
-    if (search) {
-      setSelected(search);
-    }
-  }, [search]);
-
+const HeroMap = ({ selectedTown }: HeroMapProps) => {
   const splideOptions = {
     type: "slide",
     autoWidth: true,
@@ -28,45 +21,41 @@ const HeroMap = () => {
     gap: "3rem",
   };
 
-  const handleTownClick = (townName: string) => {
-    router.push(`/discover?selected=${townName}`);
-  };
-
   return (
-    <div className="max-width-no-padding relative">
+    <div className="max-width-no-padding relative my-20 w-full">
       {towns && (
         <div className="block rounded-sm bg-white p-3 md:hidden">
           <Splide options={splideOptions}>
             {towns?.map((town) => (
               <SplideSlide key={town.name}>
-                <button
+                <Link
+                  href={town.link}
                   type="button"
-                  onClick={() => handleTownClick(town.name)}
                   className="font-poppins text-sm font-medium text-black"
                 >
                   {town.name}
-                </button>
+                </Link>
               </SplideSlide>
             ))}
           </Splide>
         </div>
       )}
       <Map
-        className="h-[25rem] overflow-hidden md:h-[36rem] md:rounded-lg lg:mt-8"
-        selectedCity={selected}
+        className="h-[25rem] w-full md:h-[36rem] md:rounded-lg"
+        selectedTown={selectedTown}
       />
       {towns && (
         <div className="absolute bottom-6 left-1/2 hidden w-[75%] -translate-x-1/2 transform rounded-sm bg-white px-6 py-3 md:block md:w-[60%]">
           <Splide options={splideOptions}>
             {towns?.map((town) => (
               <SplideSlide key={town.name}>
-                <button
+                <Link
                   type="button"
-                  onClick={() => handleTownClick(town.name)}
+                  href={town.link}
                   className="font-poppins font-medium text-black"
                 >
                   {town.name}
-                </button>
+                </Link>
               </SplideSlide>
             ))}
           </Splide>

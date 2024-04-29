@@ -1,10 +1,10 @@
 import CardDeck from "./components/CardDeck";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Hero from "./components/hero";
+import Hero from "./components/Hero";
 import Newsletter from "./components/Newsletter";
-import Slidebox from "./components/slidebox";
-import { lorem } from "./components/slidebox/featured.data";
+import Slidebox from "./components/Slidebox";
+import { lorem } from "./components/Slidebox/featured.data";
 import Switchback from "./components/Switchback";
 
 export default function Home() {
@@ -37,7 +37,7 @@ export default function Home() {
       <Hero
         heading="Discover and explore the flavors of Kapampangan Cuisine"
         description={lorem}
-        button="Get Started"
+        button={{ text: "Get Started", link: "" }}
         layout="grid"
       />
       <Switchback

@@ -9,7 +9,23 @@ import Heading from "../Heading";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import "./index.css";
 
-const Slidebox = () => {
+interface SlideboxProps {
+  heading: string;
+  description: string;
+  button?: ButtonProps;
+  slides?: slideProps[];
+}
+
+interface slideProps {
+  image: string;
+}
+
+interface ButtonProps {
+  text: string;
+  link?: string;
+}
+
+const Slidebox = ({ heading, description, button, slides }: SlideboxProps) => {
   const ref = useRef<Splide>(null);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
@@ -23,11 +39,7 @@ const Slidebox = () => {
 
   return (
     <div className="py-10 lg:py-20">
-      <Heading
-        heading="Discover and explore the flavors of Kapampangan Cuisine"
-        description={lorem}
-        button="Discover"
-      />
+      <Heading heading={heading} description={description} button={button} />
       <div id="slidebox" className="mt-10">
         <Splide
           options={{
@@ -52,9 +64,9 @@ const Slidebox = () => {
           ref={ref}
           Aria-label="Featured Projects"
         >
-          {projects?.map((project, index) => (
-            <SplideSlide key={`Featured-${project}`}>
-              <Slides image={project} active={currentIndex === index} />
+          {slides?.map((project, index) => (
+            <SplideSlide key={`Featured-${project.image}`}>
+              <Slides image={project.image} active={currentIndex === index} />
             </SplideSlide>
           ))}
         </Splide>

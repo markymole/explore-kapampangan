@@ -8,17 +8,17 @@ import {
   useLoadScript,
 } from "@react-google-maps/api";
 
-import { twMerge } from "tailwind-merge";
 import { mapOptionsWhite } from "./Map.styles";
-import { towns } from "../hero/HeroMap/HeroMap.data";
+import { twMerge } from "tailwind-merge";
+import { towns } from "../Hero/HeroMap/HeroMap.data";
 
 interface MapProps {
   posts?: any;
-  selectedCity?: string;
+  selectedTown?: string;
   className?: string;
 }
 
-const Map = ({ posts, selectedCity = "Pampanga", className }: MapProps) => {
+const Map = ({ posts, selectedTown = "Pampanga", className }: MapProps) => {
   const center = useMemo(() => ({ lat: 15.133964, lng: 120.591027 }), []);
 
   const { isLoaded } = useLoadScript({
@@ -34,7 +34,7 @@ const Map = ({ posts, selectedCity = "Pampanga", className }: MapProps) => {
     return <div>Loading ...</div>;
   }
 
-  const iframeSrc = towns.filter((town) => town.name === selectedCity);
+  const iframeSrc = towns.filter((town) => town.name === selectedTown);
 
   return (
     <div className={twMerge("w-full", className || "h-[30rem]")}>

@@ -132,3 +132,28 @@ export const towns = [
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61617.75937342341!2d120.56913328261834!3d15.15230464274986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3396f286eed2e61f%3A0x3ded82248ad9b436!2sAngeles%2C%20Pampanga!5e0!3m2!1sen!2sph!4v1710340826200!5m2!1sen!2sph",
   },
 ];
+
+export const townNames = [
+  "Angeles City",
+  "Apalit",
+  "Arayat",
+  "Bacolor",
+  "Candaba",
+  "Floridablanca",
+  "Guagua",
+  "Lubao",
+  "Mabalacat",
+  "Macabebe",
+  "Magalang",
+  "Masantol",
+  "Mexico",
+  "Minalin",
+  "Porac",
+  "San Fernando",
+  "San Luis",
+  "San Simon",
+  "Santa Ana",
+  "Santa Rita",
+  "Santo Tomas",
+  "Sasmuan",
+];

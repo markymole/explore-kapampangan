@@ -25,14 +25,14 @@ const Newsletter = ({
 }: NewsletterProps) => {
   return (
     <div className="max-width-sm padding">
-      <div className="flex flex-col items-center gap-2 rounded-2xl border bg-gradient-to-tr from-black to-neutral-900 p-6 text-white shadow-xl lg:p-10 lg:py-14">
+      <div className="flex w-full flex-col items-center gap-2 rounded-2xl border bg-gradient-to-tr from-black to-neutral-900 p-6 text-white shadow-xl lg:p-10 lg:py-14">
         {description && (
           <h4 className="font-poppins text-xl font-semibold lg:text-4xl">
             {heading}
           </h4>
         )}
         {description && (
-          <p className="mx-auto text-center font-inter text-base text-neutral-400 md:text-lg lg:max-w-2xl">
+          <p className="mx-auto text-center font-inter text-base text-neutral-400 md:text-lg xl:w-3/4">
             {description}
           </p>
         )}

@@ -11,7 +11,7 @@ interface blogCardProps {
 
 const BlogCard = ({ title, description, image, link }: blogCardProps) => {
   return (
-    <div className="animate group relative flex h-full flex-col overflow-hidden rounded-md border shadow-xl hover:shadow-2xl">
+    <div className="animate group relative flex h-full flex-col overflow-hidden rounded-xl border shadow-xl hover:shadow-2xl">
       <div className="h-50 overflow-hidden md:h-56 xl:h-60">
         <Image
           src={image}
@@ -21,13 +21,15 @@ const BlogCard = ({ title, description, image, link }: blogCardProps) => {
           className="animate h-full w-full object-cover group-hover:scale-105"
         />
       </div>
-      <div className="flex grow flex-col justify-between gap-2 p-6">
+      <div className="flex grow flex-col justify-between gap-6 p-6">
         <div className="space-y-2">
           {title && (
             <h5 className="font-poppins text-lg font-semibold">{title}</h5>
           )}
           {description && (
-            <p className="font-inter text-gray-700">{description}</p>
+            <p className="line-clamp-5 font-inter text-gray-700">
+              {description}
+            </p>
           )}
         </div>
         {link && (

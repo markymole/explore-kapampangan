@@ -1,4 +1,4 @@
-import { lorem } from "../slidebox/featured.data";
+import { lorem } from "../Slidebox/featured.data";
 
 export const cardsContent = [
   {

@@ -6,6 +6,7 @@ interface buttonProps {
   children?: ReactNode;
   variant: "primary" | "secondary" | "outline" | "link";
   size?: "xs" | "sm" | "base" | "lg" | "xl";
+  weight?: "normal" | "medium" | "semibold" | "bold";
   onClick?: () => void;
 }
 
@@ -13,6 +14,7 @@ const Button = ({
   children,
   variant,
   size = "base",
+  weight = "medium",
   onClick,
   ...props
 }: buttonProps) => {
@@ -20,7 +22,7 @@ const Button = ({
     <button
       onClick={onClick}
       {...props}
-      className={twMerge(buttonVariant({ variant, size }))}
+      className={twMerge(buttonVariant({ variant, size, weight }))}
     >
       {children}
     </button>
