@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import Icon, { IconIds } from "../icon";
+import Icon, { IconIds } from "@/app/molecules/icon";
 
 interface navProps {
   text: string;
@@ -19,7 +19,7 @@ interface subLinkProps {
   icon?: IconIds;
 }
 
-const Navlinks = ({
+const NavLinks = ({
   text,
   link,
   delay,
@@ -55,7 +55,7 @@ const Navlinks = ({
       <div
         {...props}
         className={twMerge(
-          "animate relative flex h-full items-center justify-between gap-2 font-poppins font-medium text-gray-600 hover:text-black hover:drop-shadow-md",
+          "animate relative flex h-full items-center justify-between gap-2 font-poppins font-medium text-gray-600 hover:text-black hover:drop-shadow-sm",
         )}
       >
         {text}
@@ -76,7 +76,7 @@ const Navlinks = ({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: "-4%" }}
                 transition={{ duration: 0.3 }}
-                className="mt-4 grid grid-cols-2 gap-6 rounded-lg border bg-white p-6 shadow-xl"
+                className="mt-4 grid grid-cols-2 gap-6 rounded-lg border border-gray-200 bg-white p-6 shadow-xl"
               >
                 {subLinks.map((item) => (
                   <Link
@@ -108,4 +108,4 @@ const Navlinks = ({
   );
 };
 
-export default Navlinks;
+export default NavLinks;

@@ -6,8 +6,9 @@ import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import Navlinks from "@/app/molecules/navlinks";
 import Icon, { IconIds } from "@/app/molecules/icon";
+import NavLinks from "./components/NavLink";
+import MobileNavLink from "./components/MobileNavLink";
 
 interface headerProps {
   logo?: string;
@@ -62,62 +63,49 @@ const Header = ({ logo, logoTitle, logoSubTitle, links, cta }: headerProps) => {
               Unveiling Local Treasures
             </p>
           </Link>
-          <ul className="hidden items-center font-poppins lg:flex">
-            {links?.map((link) => (
-              <Navlinks
-                key={link.link}
-                text={link.link}
-                link={link.url}
-                subLinks={link.sublinks}
-                delay={"0"}
-                active={link.url === path}
-              />
-            ))}
-          </ul>
         </div>
-        <div className="flex items-center gap-4">
-          <div className="hidden items-center gap-4 md:flex lg:items-center">
-            {/* <form
-            action=""
-            className="flex items-center rounded-full border-2 border-gray-800 px-4 py-2"
-          >
-            <input
-              type="text"
-              placeholder="search"
-              className="max-w-36 font-poppins text-sm focus:outline-none"
+        <ul className="hidden items-center font-poppins lg:flex">
+          {links?.map((link) => (
+            <NavLinks
+              key={link.link}
+              text={link.link}
+              link={link.url}
+              subLinks={link.sublinks}
+              delay={"0"}
+              active={link.url === path}
             />
-            <button>
-              <Icon icon="search" width="24" />
-            </button>
-          </form> */}
-            <button className="">
-              <Icon icon="search" width="24" />
-            </button>
+          ))}
+        </ul>
+        <div className="flex items-center gap-4">
+          <button className="">
+            <Icon icon="search" width="24" />
+          </button>
+          <div className="hidden items-center gap-4 md:flex lg:items-center">
             {cta && (
               <Button variant="primary" size="base" weight="semibold">
                 {cta.link}
               </Button>
             )}
           </div>
-          <div className="block lg:hidden">
+          <div className=" flex flex-col justify-center lg:hidden">
             <button onClick={() => setOpen(!open)}>
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 <span
                   className={twMerge(
-                    "block h-1 w-7 origin-center rounded-md bg-black transition-transform ease-in-out",
-                    open ? "translate-y-2.5 rotate-45" : "",
+                    "block h-[3px] w-6 origin-center rounded-md bg-black transition-transform ease-in-out",
+                    open ? "translate-y-2 rotate-45" : "",
                   )}
                 ></span>
                 <span
                   className={twMerge(
-                    "block h-1 w-7 origin-center rounded-md bg-green-900 transition-transform ease-in-out",
+                    "block h-[3px] w-6 origin-center rounded-md bg-green-900 transition-transform ease-in-out",
                     open ? "scale-0 opacity-0" : "",
                   )}
                 ></span>
                 <span
                   className={twMerge(
-                    "block h-1 w-7 origin-center rounded-md bg-green-700 transition-transform ease-in-out",
-                    open ? "-translate-y-2.5 -rotate-45" : "",
+                    "block h-[3px] w-6 origin-center rounded-md bg-green-700 transition-transform ease-in-out",
+                    open ? "-translate-y-1.5 -rotate-45" : "",
                   )}
                 ></span>
               </div>
@@ -132,23 +120,23 @@ const Header = ({ logo, logoTitle, logoSubTitle, links, cta }: headerProps) => {
         {open && (
           <motion.div className="absolute top-[60.75px] h-[calc(100dvh-60.75px)] w-full overflow-hidden md:top-[77px] md:h-[calc(100dvh-77px)] lg:hidden">
             <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
+              initial={{ height: 0 }}
+              animate={{ height: "100%" }}
+              exit={{ height: 0 }}
               transition={{ duration: 0.3 }}
-              className="flex h-full flex-col justify-between bg-white p-4 md:px-14"
+              className="flex flex-col justify-between overflow-y-scroll bg-white md:px-14"
             >
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col">
                 {links?.map((link, index) => {
                   const delay = `0.${2 + index}`;
 
                   return (
-                    <Navlinks
+                    <MobileNavLink
                       key={link.link}
                       text={link.link}
                       link={link.url}
                       subLinks={link.sublinks}
-                      delay={"0"}
+                      delay={delay}
                       active={link.url === path}
                     />
                   );
@@ -157,8 +145,8 @@ const Header = ({ logo, logoTitle, logoSubTitle, links, cta }: headerProps) => {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
-                className="w-full"
+                transition={{ delay: 0.35 }}
+                className="w-full p-4"
               >
                 <Button variant="primary"> Contact Us</Button>
               </motion.div>

@@ -1,4 +1,5 @@
 import { builder } from "@builder.io/sdk";
+
 import { RenderBuilderContent } from "../components/builder";
 
 import Header from "@/app/components/Header";
@@ -19,29 +20,6 @@ export default async function Page(props: PageProps) {
   const path = "/" + (props?.params?.page?.join("/") || "");
   const content = await getPageModelData(path, model);
   const headerData = await getDataModelData("header");
-
-  const links = [
-    {
-      page: "Home",
-      link: "/",
-    },
-    {
-      page: "Explore",
-      link: "/explore",
-    },
-    {
-      page: "Discover",
-      link: "/discover",
-    },
-    {
-      page: "Resources",
-      link: "/resources",
-    },
-    {
-      page: "About",
-      link: "/about-us",
-    },
-  ];
 
   return (
     <>
