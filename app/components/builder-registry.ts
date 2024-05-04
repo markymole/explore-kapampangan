@@ -9,9 +9,10 @@ import { SwitchbackBuilderConfig } from "./Switchback/Switchback.buiderConfig";
 import { HeroBuilderConfig } from "./Hero/Hero.builderConfig";
 import { SlideboxBuilderConfig } from "./Slidebox/Slidebox.builderConfig";
 import { NewsletterBuilderConfig } from "./Newsletter/Newsletter.builderConfig";
-import { CardDeckBuilderConfig } from "./CardDeck/CardDeck.builderConfig";
+import { BlogCardDeckBuilderConfig } from "./CardDeck/variants/BlogCards/BlogCards.builderConfig";
 import { HeroMapBuilderConfig } from "./Hero/HeroMap/HeroMap.builderConfig";
 import { SliderBuilderConfig } from "./Slider/Slider.builderConfig";
+import { CardDeckBuilderConfig } from "./CardDeck/CarddDeck.builderConfig";
 
 const customComponents = [
   {
@@ -31,7 +32,13 @@ const customComponents = [
     config: NewsletterBuilderConfig,
   },
   {
-    component: dynamic(() => import("@/app/components/CardDeck")),
+    component: dynamic(
+      () => import("@/app/components/CardDeck/variants/BlogCards"),
+    ),
+    config: BlogCardDeckBuilderConfig,
+  },
+  {
+    component: dynamic(() => import("@/app/components/CardDeck/")),
     config: CardDeckBuilderConfig,
   },
   {

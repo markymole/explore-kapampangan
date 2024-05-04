@@ -1,10 +1,10 @@
 import React, { ReactNode } from "react";
-import { buttonVariant } from "./button.styles";
+import { ButtonVariant } from "./Button.styles";
 import { twMerge } from "tailwind-merge";
 
 interface buttonProps {
   children?: ReactNode;
-  variant: "primary" | "secondary" | "outline" | "link";
+  hierarchy: "primary" | "secondary" | "tertiary" | "outline" | "link";
   size?: "xs" | "sm" | "base" | "lg" | "xl";
   weight?: "normal" | "medium" | "semibold" | "bold";
   onClick?: () => void;
@@ -12,7 +12,7 @@ interface buttonProps {
 
 const Button = ({
   children,
-  variant,
+  hierarchy,
   size = "base",
   weight = "medium",
   onClick,
@@ -22,7 +22,7 @@ const Button = ({
     <button
       onClick={onClick}
       {...props}
-      className={twMerge(buttonVariant({ variant, size, weight }))}
+      className={twMerge(ButtonVariant({ hierarchy, size, weight }))}
     >
       {children}
     </button>

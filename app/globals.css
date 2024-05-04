@@ -4,7 +4,7 @@
 
 @layer components {
   .max-width {
-    @apply mx-auto max-w-[85rem] px-4 md:px-14 lg:px-20 2xl:px-0;
+    @apply mx-auto max-w-[80rem] px-4 md:px-14 lg:px-20 2xl:px-0;
   }
 }
 
@@ -16,7 +16,7 @@
 
 @layer components {
   .max-width-sm {
-    @apply mx-auto max-w-[80rem] px-4 md:px-14 lg:px-20 2xl:px-0;
+    @apply mx-auto max-w-[75rem] px-4 md:px-14 lg:px-20 2xl:px-0;
   }
 }
 
@@ -30,4 +30,34 @@
   .animate {
     @apply transition-all duration-300 ease-out;
   }
+}
+
+#selectors .splide:not(.is-overflow) .splide__list {
+  justify-content: center;
+}
+
+#slides .splide__pagination {
+  column-gap: 0.5rem;
+  bottom: -3em;
+  padding: 0 0em;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+  pointer-events: none;
+}
+
+#slides .splide__pagination__page.is-active {
+  background: #daff8c;
+  z-index: 1;
+}
+
+#slides .splide__pagination__page {
+  background: 181818;
+  z-index: 1;
 }

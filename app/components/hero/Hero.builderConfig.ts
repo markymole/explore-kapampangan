@@ -1,42 +1,37 @@
+import { buttonConfig, headingConfig } from "@/app/utils/builderShortcuts";
 import { lorem } from "../Slidebox/featured.data";
 
 export const HeroBuilderConfig = {
   name: "Hero",
   inputs: [
     {
-      name: "heading",
-      type: "string",
-      defaultValue: "Kapampangan Cuisine",
-    },
-    {
       name: "layout",
       enum: ["centered", "split"],
       defaultValue: "split",
     },
+    headingConfig,
     {
       name: "description",
-      type: "string",
+      type: "richText",
       defaultValue: lorem,
     },
     {
       name: "contentType",
-      enum: ["image", "grid", "video", "map"],
-      defaultValue: "grid",
+      enum: ["image", "bento", "video", "map"],
+      defaultValue: "bento",
     },
     {
-      name: "button",
-      type: "object",
+      name: "bentoImages",
+      type: "list",
+      showIf: "options.get('contentType') === 'bento'",
       subFields: [
         {
-          name: "text",
-          type: "string",
-          defaultValue: "Call to action",
-        },
-        {
-          name: "link",
-          type: "string",
+          name: "image",
+          type: "file",
+          allowedFileTypes: ["jpeg", "png", "svg"],
         },
       ],
     },
+    buttonConfig,
   ],
 };

@@ -1,21 +1,27 @@
 import React from "react";
+import parse from "html-react-parser";
+
 import { twMerge } from "tailwind-merge";
-import Button from "@/app/molecules/button";
+import Button from "@/app/molecules/Button";
 import Image from "next/image";
-import { heroLayout } from "./Hero.styles";
+import {
+  headingContainerStyle,
+  heroDescriptionStyle,
+  heroHeadingStyle,
+  heroLayout,
+} from "./Hero.styles";
 import Link from "next/link";
+import BentoGrid, { type bentoImageProps } from "./components/BentoGrid";
+import headingGradientHighlight from "@/app/utils/headingHighlight";
+import type { buttonsProps } from "@/app/utils/sharedTypes";
 
 interface heroProps {
   heading: string;
   layout: "centered" | "split";
-  contentType: "grid" | "image" | "video" | "map";
+  contentType: "bento" | "image" | "video" | "map";
+  bentoImages?: bentoImageProps[];
   description: string;
-  button: buttonsProps;
-}
-
-interface buttonsProps {
-  text: string;
-  link?: string;
+  buttons: buttonsProps[];
 }
 
 const Hero = ({
@@ -23,68 +29,49 @@ const Hero = ({
   description,
   layout,
   contentType,
-  button,
+  bentoImages,
+  buttons,
 }: heroProps) => {
+  const highlight = headingGradientHighlight(
+    heading,
+    "text-transparent bg-clip-text bg-gradient-to-r from-black via-lime to-eerie",
+  );
+
   return (
     <div>
       <div
         className={twMerge("max-width padding", heroLayout({ layout: layout }))}
       >
-        <div className={twMerge("flex flex-col gap-4")}>
-          <h1 className="font-poppins text-4xl font-semibold lg:text-6xl">
-            {heading}
-          </h1>
-          <p className="font-inter text-gray-800 lg:text-lg">{description}</p>
-          {button && (
-            <Button variant="primary">
-              {button.link ? (
-                <Link href={button.link}>{button.text}</Link>
-              ) : (
-                button.text
-              )}
-            </Button>
+        <div className={twMerge(headingContainerStyle({ layout }))}>
+          {heading && (
+            <h1 className={twMerge(heroHeadingStyle())}>{highlight}</h1>
+          )}
+          {description && (
+            <div className={twMerge(heroDescriptionStyle({ layout }))}>
+              {parse(description)}
+            </div>
+          )}
+          {buttons && buttons.length > 0 && (
+            <div className="mt-3 flex flex-col gap-4 md:flex-row">
+              {buttons.map((button) => (
+                <Button
+                  key={button.text}
+                  hierarchy={button.hierarchy}
+                  size={button.size}
+                >
+                  {button.link ? (
+                    <Link href={button.link}>{button.text}</Link>
+                  ) : (
+                    button.text
+                  )}
+                </Button>
+              ))}
+            </div>
           )}
         </div>
-        {contentType === "grid" && (
-          <div className="grid h-[40rem] grid-cols-1 grid-rows-9 gap-4 lg:grid-cols-2 lg:grid-rows-12">
-            <div className="col-span-1 row-span-3 grid grid-cols-2 gap-4 lg:row-span-7 lg:grid-cols-1 lg:grid-rows-5">
-              <div className="row-span-5 overflow-hidden rounded-md bg-black shadow-xl lg:row-span-3">
-                <Image
-                  width={500}
-                  height={500}
-                  src="/images/featured/featured_2.jpg"
-                  alt="Image"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="row-span-5 overflow-hidden rounded-md shadow-xl lg:row-span-2">
-                <Image
-                  width={500}
-                  height={500}
-                  src="/images/featured/featured_1.jpg"
-                  alt="Image"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
-            <div className="row-span-3 overflow-hidden rounded-md shadow-xl lg:col-span-1 lg:row-span-7">
-              <Image
-                width={500}
-                height={500}
-                src="/images/featured/featured_4.jpg"
-                alt="Image"
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <div className="row-span-3 overflow-hidden rounded-md shadow-xl lg:col-span-2 lg:row-span-5">
-              <Image
-                width={500}
-                height={500}
-                src="/images/featured/featured_3.jpg"
-                alt="Image"
-                className="h-full w-full object-cover"
-              />
-            </div>
+        {contentType === "bento" && bentoImages && (
+          <div className="mt-10">
+            <BentoGrid images={bentoImages} layout={layout} />
           </div>
         )}
         {contentType === "image" && (

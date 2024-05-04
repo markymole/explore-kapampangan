@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Button from "@/app/molecules/button";
+import Button from "@/app/molecules/Button";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import Icon, { IconIds } from "@/app/molecules/icon";
+import Icon, { IconIds } from "@/app/molecules/Icon";
 import NavLinks from "./components/NavLink";
 import MobileNavLink from "./components/MobileNavLink";
 
@@ -82,7 +82,7 @@ const Header = ({ logo, logoTitle, logoSubTitle, links, cta }: headerProps) => {
           </button>
           <div className="hidden items-center gap-4 md:flex lg:items-center">
             {cta && (
-              <Button variant="primary" size="base" weight="semibold">
+              <Button hierarchy="primary" size="base" weight="semibold">
                 {cta.link}
               </Button>
             )}
@@ -148,7 +148,7 @@ const Header = ({ logo, logoTitle, logoSubTitle, links, cta }: headerProps) => {
                 transition={{ delay: 0.35 }}
                 className="w-full p-4"
               >
-                <Button variant="primary"> Contact Us</Button>
+                <Button hierarchy="primary"> Contact Us</Button>
               </motion.div>
             </motion.div>
           </motion.div>

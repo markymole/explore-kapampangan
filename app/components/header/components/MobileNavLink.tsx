@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import Icon, { IconIds } from "@/app/molecules/icon";
+import Icon, { IconIds } from "@/app/molecules/Icon";
 
 interface navProps {
   text: string;

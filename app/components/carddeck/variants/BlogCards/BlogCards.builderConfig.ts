@@ -1,6 +1,7 @@
-import { lorem } from "../Slidebox/featured.data";
+import { buttonConfig } from "@/app/utils/builderShortcuts";
+import { lorem } from "../../../Slidebox/featured.data";
 
-export const CardDeckBuilderConfig = {
+export const BlogCardDeckBuilderConfig = {
   name: "Blogs Card Deck",
   inputs: [
     {
@@ -13,20 +14,8 @@ export const CardDeckBuilderConfig = {
       type: "richText",
       defaultValue: lorem,
     },
-    {
-      name: "button",
-      type: "object",
-      subFields: [
-        {
-          name: "text",
-          type: "string",
-        },
-        {
-          name: "link",
-          type: "string",
-        },
-      ],
-    },
+    buttonConfig,
+    // to do update one with reference once blog made
     {
       name: "cards",
       type: "list",

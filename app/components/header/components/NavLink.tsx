@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import Icon, { IconIds } from "@/app/molecules/icon";
+import Icon, { IconIds } from "@/app/molecules/Icon";
 
 interface navProps {
   text: string;
@@ -55,17 +55,23 @@ const NavLinks = ({
       <div
         {...props}
         className={twMerge(
-          "animate relative flex h-full items-center justify-between gap-2 font-poppins font-medium text-gray-600 hover:text-black hover:drop-shadow-sm",
+          "animate group/menu relative flex h-full items-center justify-between gap-2 font-poppins font-medium text-gray-600 hover:text-black hover:drop-shadow-sm",
         )}
       >
-        {text}
+        <p className="relative z-10"> {text}</p>
         {subLinks && subLinks.length > 0 && (
           <Icon
             icon="chevron-down"
             size={16}
-            className="animate stroke-current group-hover:rotate-180"
+            className="animate relative z-10 stroke-current group-hover:rotate-180"
           />
         )}
+        <div
+          className={twMerge(
+            "animate absolute bottom-0 z-0 h-1/2 w-0 bg-mindaro group-hover/menu:w-full",
+            subLinks && current === text ? "w-full" : "",
+          )}
+        ></div>
       </div>
       <div className="hidden lg:block">
         <AnimatePresence>
@@ -82,18 +88,18 @@ const NavLinks = ({
                   <Link
                     href={item.url}
                     key={item.link}
-                    className="animate flex w-80 gap-3 rounded-md p-4 text-black hover:bg-gray-100"
+                    className="animate group/submenu flex max-w-96 gap-3 rounded-md p-4 hover:bg-gray-200/70"
                   >
                     {item.icon && (
                       <Icon
                         icon={item.icon}
                         size={24}
-                        className="shrink-0 fill-black stroke-black text-black"
+                        className="shrink-0 fill-current group-hover/submenu:text-black"
                       />
                     )}
-                    <div className="flex flex-col">
+                    <div className="flex flex-col text-black">
                       <h6 className="text-sm font-semibold"> {item.link}</h6>
-                      <p className="font-inter text-sm text-gray-400">
+                      <p className="font-inter text-sm text-gray-400 group-hover/submenu:text-gray-500">
                         {item.description && item.description}
                       </p>
                     </div>

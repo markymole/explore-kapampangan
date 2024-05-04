@@ -1,13 +1,19 @@
 import React from "react";
 import Image from "next/image";
+import parse from "html-react-parser";
+
 import { twMerge } from "tailwind-merge";
 
 interface slidesProps {
+  page: string;
+  title: string;
+  description: string;
+  link: string;
   image: string;
-  active: boolean;
+  active?: boolean;
 }
 
-const Slides = ({ image, active }: slidesProps) => {
+const Slides = ({ title, description, link, image, active }: slidesProps) => {
   return (
     <div
       className={twMerge(

@@ -1,48 +1,64 @@
+import { buttonsProps } from "@/app/utils/sharedTypes";
 import React from "react";
 import Heading from "../Heading";
-import { lorem } from "../Slidebox/featured.data";
-import { cardsContent } from "./carddeck.data";
-import BlogCard from "@/app/molecules/card/blogCard";
+
+import { twMerge } from "tailwind-merge";
+import ColoredCard, {
+  ColoredCardProps,
+} from "@/app/molecules/Cards/ColoredCard";
 
 interface CardDeckProps {
   heading: string;
   description?: string;
-  button: ButtonProps;
-  cards: cardProps[];
+  type: "Default" | "Bento" | "Blog";
+  customColumn?: boolean;
+  maxColumns?: 1 | 2 | 3 | 4 | 5;
+  buttons: buttonsProps[];
+  cards?: cardProps[];
 }
 
-interface cardProps {
-  title: string;
-  description: string;
-  image: string;
-  link: string;
-}
+interface cardProps extends ColoredCardProps {}
 
-interface ButtonProps {
-  text: string;
-  link?: string;
-}
-
-const CardDeck = ({ heading, description, button, cards }: CardDeckProps) => {
+const CardDeck = ({
+  heading,
+  description,
+  type,
+  buttons,
+  customColumn,
+  maxColumns,
+  cards,
+}: CardDeckProps) => {
   return (
     <div className="py-10 lg:py-20">
-      <Heading heading={heading} description={lorem} button={button} />
-      {cards && (
-        <div
-          id="cards"
-          className="max-width-sm mt-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
-        >
-          {cards?.map((card) => (
-            <BlogCard
-              key={card.title}
-              title={card.title}
-              description={card.description}
-              image={card.image}
-              link={card.link}
-            />
-          ))}
-        </div>
-      )}
+      <div className="max-width">
+        <Heading
+          heading={heading}
+          description={description}
+          buttons={buttons}
+        />
+        {cards && (
+          <div
+            className={twMerge(
+              "mt-10 grid grid-cols-1 gap-8 md:grid-cols-2",
+              customColumn && maxColumns
+                ? `xl:grid-cols-${maxColumns}`
+                : "xl:grid-cols-3",
+            )}
+          >
+            {type === "Default" &&
+              cards.map((card) => (
+                <ColoredCard
+                  key={Math.random()}
+                  theme={card.theme}
+                  icon={card.icon}
+                  title={card.title}
+                  description={card.description}
+                  link={card.link}
+                />
+              ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

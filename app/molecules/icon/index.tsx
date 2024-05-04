@@ -12,6 +12,7 @@ export const iconIds = [
   // general icons
   "search",
   "chevron-down",
+  "arrow-forward",
 ] as const;
 export type IconIds = (typeof iconIds)[number];
 

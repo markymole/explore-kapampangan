@@ -1,4 +1,4 @@
-import Button from "@/app/molecules/button";
+import Button from "@/app/molecules/Button";
 import React from "react";
 
 interface NewsletterProps {
