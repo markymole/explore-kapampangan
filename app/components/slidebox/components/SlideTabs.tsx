@@ -15,12 +15,12 @@ const SlideTabs = ({ icon, title, active, onClick }: SlideTabsProps) => {
     <motion.button
       onClick={onClick}
       className={twMerge(
-        "relative flex flex-col items-center gap-2 px-10 py-4",
+        "relative flex flex-col items-center gap-2 px-8 py-4 lg:px-9",
       )}
     >
       <div className="relative h-full w-fit">
         {title && (
-          <p className="relative z-10 font-poppins text-lg font-semibold ">
+          <p className="relative z-10 font-poppins font-semibold lg:text-lg ">
             {title}
           </p>
         )}

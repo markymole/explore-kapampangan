@@ -31,7 +31,7 @@ const Heading = ({
       <div className={twMerge("max-width", headingLayout({ layout }))}>
         {eyebrow && <Eyebrow text={eyebrow} />}
         {heading && (
-          <h1 className="font-poppins text-2xl font-semibold lg:text-5xl">
+          <h1 className="font-poppins text-3xl font-semibold md:text-4xl xl:text-5xl">
             {highlight}
           </h1>
         )}

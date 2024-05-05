@@ -25,7 +25,7 @@ const Newsletter = ({
 }: NewsletterProps) => {
   return (
     <div className="max-width-sm padding">
-      <div className="flex w-full flex-col items-center gap-2 rounded-2xl border bg-gradient-to-tr from-black to-neutral-900 p-6 text-white shadow-xl lg:p-10 lg:py-14">
+      <div className="flex w-full flex-col items-center gap-2 rounded-3xl border bg-gradient-to-tr from-eerie to-neutral-900 p-6 text-white shadow-xl lg:p-10 lg:py-14">
         {description && (
           <h4 className="font-poppins text-xl font-semibold lg:text-4xl">
             {heading}
@@ -40,10 +40,10 @@ const Newsletter = ({
           <input
             type="text"
             placeholder="Enter your email"
-            className="w-full grow rounded-md border-2 bg-black/20 py-2 ps-3 font-poppins text-sm font-medium text-white placeholder-white/50 focus:outline-none"
+            className="w-full grow rounded-lg border-2 bg-black/20 py-2 ps-3 font-poppins text-sm font-medium text-white placeholder-white/50 focus:outline-none"
           />
           {button && (
-            <Button variant="secondary" size="sm">
+            <Button hierarchy="secondary" size="sm">
               {button.text}
             </Button>
           )}

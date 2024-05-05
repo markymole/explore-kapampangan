@@ -82,13 +82,13 @@ const NavLinks = ({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: "-4%" }}
                 transition={{ duration: 0.3 }}
-                className="mt-4 grid grid-cols-2 gap-6 rounded-lg border border-gray-200 bg-white p-6 shadow-xl"
+                className="mt-4 grid grid-cols-2 gap-6 rounded-xl border border-gray-200 bg-white p-6 shadow-xl"
               >
                 {subLinks.map((item) => (
                   <Link
                     href={item.url}
                     key={item.link}
-                    className="animate group/submenu flex max-w-96 gap-3 rounded-md p-4 hover:bg-gray-200/70"
+                    className="animate group/submenu flex max-w-96 gap-3 rounded-lg p-4 hover:bg-gray-200/50"
                   >
                     {item.icon && (
                       <Icon

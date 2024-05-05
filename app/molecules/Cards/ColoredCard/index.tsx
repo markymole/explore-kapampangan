@@ -7,6 +7,7 @@ import { ColoredCardVariant } from "../Cards.styles";
 import Link from "next/link";
 
 export interface ColoredCardProps {
+  colSpan?: 1 | 2 | 3;
   theme: "Dark" | "Green" | "Beige" | "White";
   icon: IconIds;
   title: string;
@@ -15,28 +16,37 @@ export interface ColoredCardProps {
 }
 
 const ColoredCard = ({
+  colSpan = 1,
   theme,
   icon,
   title,
   description,
   link,
 }: ColoredCardProps) => {
+  const Element = link ? Link : "div";
+
   return (
-    <div className={twMerge(ColoredCardVariant({ theme }))}>
-      {icon && (
-        <Icon
-          icon={icon}
-          size={48}
-          className={twMerge(theme === "Dark" ? "fill-white" : "")}
-        />
-      )}
-      {title && <h5 className="font-poppins text-lg font-medium">{title}</h5>}
-      {description && <div className="fon-inter">{parse(description)}</div>}
+    <Element
+      href={link ? link : ""}
+      className={twMerge(ColoredCardVariant({ theme, colSpan }))}
+    >
+      <div className="space-y-4">
+        {icon && (
+          <Icon
+            icon={icon}
+            size={48}
+            className={twMerge(theme === "Dark" ? "fill-white" : "")}
+          />
+        )}
+        {title && (
+          <h5 className="font-poppins text-xl font-semibold lg:text-2xl">
+            {title}
+          </h5>
+        )}
+        {description && <div className="font-inter">{parse(description)}</div>}
+      </div>
       {link && (
-        <Link
-          href={link ? link : ""}
-          className="animate mt-2 inline-flex items-center gap-2 font-poppins font-medium hover:gap-4"
-        >
+        <div className="animate mt-2 inline-flex items-center gap-2 font-poppins font-medium group-hover:gap-4">
           Learn More
           <Icon
             icon="arrow-forward"
@@ -46,9 +56,9 @@ const ColoredCard = ({
               theme === "Dark" ? "fill-white" : "",
             )}
           />
-        </Link>
+        </div>
       )}
-    </div>
+    </Element>
   );
 };
 

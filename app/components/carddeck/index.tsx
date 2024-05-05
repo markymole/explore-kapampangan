@@ -2,7 +2,7 @@ import { buttonsProps } from "@/app/utils/sharedTypes";
 import React from "react";
 import Heading from "../Heading";
 
-import { twMerge } from "tailwind-merge";
+import { twJoin, twMerge } from "tailwind-merge";
 import ColoredCard, {
   ColoredCardProps,
 } from "@/app/molecules/Cards/ColoredCard";
@@ -38,17 +38,18 @@ const CardDeck = ({
         />
         {cards && (
           <div
-            className={twMerge(
+            className={twJoin(
               "mt-10 grid grid-cols-1 gap-8 md:grid-cols-2",
               customColumn && maxColumns
                 ? `xl:grid-cols-${maxColumns}`
                 : "xl:grid-cols-3",
             )}
           >
-            {type === "Default" &&
+            {(type === "Default" || type === "Bento") &&
               cards.map((card) => (
                 <ColoredCard
                   key={Math.random()}
+                  colSpan={card.colSpan}
                   theme={card.theme}
                   icon={card.icon}
                   title={card.title}

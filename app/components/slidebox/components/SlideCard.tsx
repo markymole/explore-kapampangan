@@ -24,10 +24,10 @@ const SlideCard = ({
   active,
 }: slidesProps) => {
   return (
-    <div className="flex h-full flex-col justify-between gap-10 rounded-lg border p-4 lg:grid lg:grid-cols-12 lg:items-center lg:border-none lg:px-20 lg:py-16">
+    <div className="flex h-full flex-col justify-between gap-10 rounded-lg border p-4 py-6 lg:grid lg:grid-cols-12 lg:items-center lg:border-none lg:p-0 xl:py-10 2xl:px-20 2xl:py-16">
       <div className="flex h-full flex-col gap-4 lg:col-span-7">
         {page && (
-          <p className="font-inter font-semibold text-gray-800 lg:text-lg">
+          <p className="font-inter font-semibold text-gray-800 lg:text-base ">
             {page}
           </p>
         )}
@@ -49,7 +49,7 @@ const SlideCard = ({
       </div>
       <Image
         src={image}
-        className="h-60 w-full shrink-0 rounded-lg object-cover lg:col-span-5 lg:h-80"
+        className="h-60 w-full shrink-0 rounded-lg object-cover md:h-72 lg:col-span-5 lg:h-80"
         height={1000}
         width={1000}
         alt={image}

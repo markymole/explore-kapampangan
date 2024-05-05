@@ -48,6 +48,7 @@ const Switchback = ({
           SwitchbackLayout({ layout: layout }),
         )}
       >
+        {/* Heading section */}
         <div
           className={twMerge(
             "flex flex-col gap-4",
@@ -56,7 +57,7 @@ const Switchback = ({
         >
           {eyebrow && <Eyebrow text={eyebrow} />}
           {heading && (
-            <h2 className="font-poppins text-2xl font-semibold leading-loose lg:text-5xl">
+            <h2 className="font-poppins text-3xl font-semibold md:text-4xl xl:text-5xl">
               {highlight}
             </h2>
           )}
@@ -88,6 +89,8 @@ const Switchback = ({
             </div>
           )}
         </div>
+
+        {/* contents */}
         <div
           className={twMerge(
             "lg:order-none",
@@ -99,7 +102,7 @@ const Switchback = ({
               {columnContent.map((content) => (
                 <div key={content.title} className="flex flex-col gap-2">
                   {content.title && (
-                    <h5 className="font-poppins text-lg font-semibold lg:text-2xl">
+                    <h5 className="font-poppins text-xl font-semibold lg:text-2xl">
                       {content.title}
                     </h5>
                   )}
@@ -136,6 +139,8 @@ const Switchback = ({
               className="rounded-lg shadow-xl"
             ></iframe>
           )}
+
+          {/* Button mobile */}
           {layout === "Default" && buttons && buttons.length > 0 && (
             <div
               className={twMerge(

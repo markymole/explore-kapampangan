@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Icon from "../../Icon";
+import { twMerge } from "tailwind-merge";
 
 interface blogCardProps {
   title: string;
@@ -10,8 +12,13 @@ interface blogCardProps {
 }
 
 const BlogCard = ({ title, description, image, link }: blogCardProps) => {
+  const Element = link ? Link : "div";
+
   return (
-    <div className="animate group relative flex h-full flex-col overflow-hidden rounded-xl border shadow-xl hover:shadow-2xl">
+    <Element
+      href={link ? link : ""}
+      className="animate group relative flex h-full flex-col overflow-hidden rounded-xl border shadow-lg hover:shadow-xl"
+    >
       <div className="h-50 overflow-hidden md:h-56 xl:h-60">
         <Image
           src={image}
@@ -33,29 +40,17 @@ const BlogCard = ({ title, description, image, link }: blogCardProps) => {
           )}
         </div>
         {link && (
-          <Link
-            href={link ? link : ""}
-            className="animate mt-2 inline-flex items-center gap-2 font-poppins font-medium hover:gap-4"
-          >
+          <div className="animate mt-3 inline-flex items-center gap-2 font-poppins font-medium group-hover:gap-4">
             Read More{" "}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="h-6 w-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-              />
-            </svg>
-          </Link>
+            <Icon
+              icon="arrow-forward"
+              size={18}
+              className={twMerge("stroke-4")}
+            />
+          </div>
         )}
       </div>
-    </div>
+    </Element>
   );
 };
 

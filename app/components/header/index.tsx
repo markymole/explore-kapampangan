@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import Button from "@/app/molecules/Button";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
@@ -23,13 +24,13 @@ interface ctaProps {
   url: string;
 }
 
-interface linkProps {
+export interface linkProps {
   link: string;
   url?: string;
   sublinks: subLinkProps[];
 }
 
-interface subLinkProps {
+export interface subLinkProps {
   link: string;
   url: string;
   description?: string;
@@ -52,17 +53,27 @@ const Header = ({ logo, logoTitle, logoSubTitle, links, cta }: headerProps) => {
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white py-3 shadow-lg shadow-gray-200/40 md:py-4 lg:py-0">
       <nav className="max-width flex items-center justify-between">
         <div className="flex items-center gap-10">
-          <Link href="/">
-            <h1
-              id="logo"
-              className="font-poppins text-base font-semibold leading-tight tracking-wide md:text-lg"
-            >
-              Explore Pampanga
-            </h1>
-            <p className="font-inter text-[10.5px] uppercase text-gray-600 md:text-xs">
-              Unveiling Local Treasures
-            </p>
-          </Link>
+          {!logo ? (
+            <Link href="/">
+              <h1
+                id="logo"
+                className="font-poppins text-base font-semibold leading-tight tracking-wide md:text-lg"
+              >
+                {logoTitle}
+              </h1>
+              <p className="font-inter text-[10.5px] uppercase text-gray-600 md:text-xs">
+                {logoSubTitle}
+              </p>
+            </Link>
+          ) : (
+            <Image
+              src={logo}
+              height={1000}
+              width={1000}
+              className="w-36"
+              alt={logo}
+            />
+          )}
         </div>
         <ul className="hidden items-center font-poppins lg:flex">
           {links?.map((link) => (

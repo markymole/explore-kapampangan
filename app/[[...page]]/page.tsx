@@ -31,7 +31,12 @@ export default async function Page(props: PageProps) {
         cta={headerData.data.cta}
       />
       <RenderBuilderContent content={content} model={model} />
-      <Footer />
+      <Footer
+        logo={headerData.data.logo}
+        logoTitle={headerData.data.logoTitle}
+        logoSubTitle={headerData.data.logoSubTitle}
+        links={headerData.data.links}
+      />
     </>
   );
 }

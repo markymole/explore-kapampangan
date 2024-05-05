@@ -91,6 +91,7 @@ const Slidebox = ({
               perMove: 1,
               breakpoints: {
                 600: { padding: "0%", trimSpace: false, focus: "center" },
+                1024: { drag: true },
               },
             }}
             ref={thumbnailRef}
@@ -111,7 +112,9 @@ const Slidebox = ({
         <div id="slides" className="mt-10 h-full">
           <Splide
             options={{
-              type: "loop",
+              type: "slide",
+              rewind: true,
+              rewindByDrag: true,
               autoplay: true,
               arrows: false,
               pagination: true,

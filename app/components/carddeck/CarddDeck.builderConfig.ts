@@ -31,10 +31,11 @@ export const CardDeckBuilderConfig = {
       defaultValue: 3,
       showIf: "options.get('customColumn') === true",
     },
+    // Defaeult Config
     {
       name: "cards",
       type: "list",
-      showIf: 'options.get("type") !== "Blog"',
+      showIf: 'options.get("type") === "Default"',
       subFields: [
         {
           name: "theme",
@@ -64,6 +65,46 @@ export const CardDeckBuilderConfig = {
         },
       ],
     },
+    // Beto Card Config
+    {
+      name: "cards",
+      type: "list",
+      showIf: 'options.get("type") === "Bento"',
+      subFields: [
+        {
+          name: "colSpan",
+          enum: [1, 2, 3],
+          defaultValue: 1,
+        },
+        {
+          name: "theme",
+          enum: ["Dark", "Green", "Beige", "White"],
+          defaultValue: "Dark",
+        },
+        {
+          name: "icon",
+          enum: iconIds,
+          defaultValue: "widget",
+        },
+        {
+          name: "title",
+          type: "string",
+          defaultValue: "Place title here",
+        },
+        {
+          name: "description",
+          type: "richText",
+          defaultValue: lorem,
+        },
+        {
+          name: "link",
+          type: "string",
+          helperText:
+            "Link must start with slash and must not have trailing slash",
+        },
+      ],
+    },
+    // Blog Cards Config
     {
       name: "cards",
       type: "list",
