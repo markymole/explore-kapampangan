@@ -1,18 +1,19 @@
-import { buttonsProps } from "@/app/utils/sharedTypes";
 import React from "react";
 import Heading from "../Heading";
 
-import { twJoin, twMerge } from "tailwind-merge";
+import { twMerge } from "tailwind-merge";
 import ColoredCard, {
   ColoredCardProps,
 } from "@/app/molecules/Cards/ColoredCard";
+import { gridLayout } from "./CardDeck.styles";
+import { buttonsProps } from "@/app/utils/sharedTypes";
 
 interface CardDeckProps {
   heading: string;
   description?: string;
   type: "Default" | "Bento" | "Blog";
   customColumn?: boolean;
-  maxColumns?: 1 | 2 | 3 | 4 | 5;
+  maxColumns?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
   buttons: buttonsProps[];
   cards?: cardProps[];
 }
@@ -38,11 +39,8 @@ const CardDeck = ({
         />
         {cards && (
           <div
-            className={twJoin(
-              "mt-10 grid grid-cols-1 gap-8 md:grid-cols-2",
-              customColumn && maxColumns
-                ? `xl:grid-cols-${maxColumns}`
-                : "xl:grid-cols-3",
+            className={twMerge(
+              customColumn && gridLayout({ columns: maxColumns }),
             )}
           >
             {(type === "Default" || type === "Bento") &&

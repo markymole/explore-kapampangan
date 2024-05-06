@@ -7,6 +7,7 @@ interface buttonProps {
   hierarchy: "primary" | "secondary" | "tertiary" | "outline" | "link";
   size?: "xs" | "sm" | "base" | "lg" | "xl";
   weight?: "normal" | "medium" | "semibold" | "bold";
+  className?: string;
   onClick?: () => void;
 }
 
@@ -15,6 +16,7 @@ const Button = ({
   hierarchy,
   size = "base",
   weight = "medium",
+  className,
   onClick,
   ...props
 }: buttonProps) => {
@@ -22,7 +24,7 @@ const Button = ({
     <button
       onClick={onClick}
       {...props}
-      className={twMerge(ButtonVariant({ hierarchy, size, weight }))}
+      className={twMerge(className, ButtonVariant({ hierarchy, size, weight }))}
     >
       {children}
     </button>

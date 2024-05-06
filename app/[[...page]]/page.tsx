@@ -20,6 +20,7 @@ export default async function Page(props: PageProps) {
   const path = "/" + (props?.params?.page?.join("/") || "");
   const content = await getPageModelData(path, model);
   const headerData = await getDataModelData("header");
+  const footerData = await getDataModelData("footer");
 
   return (
     <>
@@ -32,10 +33,10 @@ export default async function Page(props: PageProps) {
       />
       <RenderBuilderContent content={content} model={model} />
       <Footer
-        logo={headerData.data.logo}
-        logoTitle={headerData.data.logoTitle}
-        logoSubTitle={headerData.data.logoSubTitle}
-        links={headerData.data.links}
+        logo={footerData.data.logo}
+        title={footerData.data.title}
+        description={footerData.data.description}
+        links={footerData.data.links}
       />
     </>
   );

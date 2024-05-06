@@ -24,7 +24,7 @@ export const heroDescriptionStyle = cva(
 );
 
 export const heroHeadingStyle = cva([
-  "font-poppins text-5xl font-semibold md:text-6xl xl:text-7xl",
+  "font-poppins text-4xl font-semibold md:text-6xl xl:text-7xl break-words",
 ]);
 
 export const headingContainerStyle = cva(["flex flex-col gap-4"], {

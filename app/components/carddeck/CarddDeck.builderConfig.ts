@@ -27,7 +27,7 @@ export const CardDeckBuilderConfig = {
     },
     {
       name: "maxColumns",
-      enum: [1, 2, 3, 4, 5],
+      enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       defaultValue: 3,
       showIf: "options.get('customColumn') === true",
     },
@@ -73,7 +73,7 @@ export const CardDeckBuilderConfig = {
       subFields: [
         {
           name: "colSpan",
-          enum: [1, 2, 3],
+          enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
           defaultValue: 1,
         },
         {
